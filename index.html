@@ -28,7 +28,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
+            position: relative;
         }
         
         .app-container {
@@ -59,9 +60,18 @@
             letter-spacing: -0.5px;
         }
         
+        .header-info {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            padding: 0 20px 10px;
+            background-color: var(--light);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
         .card-container {
             position: relative;
-            height: calc(100vh - 140px);
+            height: calc(100vh - 210px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -111,7 +121,7 @@
         
         .actions {
             position: absolute;
-            bottom: 0;
+            bottom: 60px;
             width: 100%;
             display: flex;
             justify-content: center;
@@ -138,6 +148,18 @@
         .action-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 7px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        .disclaimer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 11px;
+            color: #666;
+            padding: 10px 20px;
+            background-color: var(--light);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .progress-container {
@@ -204,6 +226,60 @@
                 transform: rotate(360deg);
             }
         }
+        /* Tallest guys sidebar */
+        
+        .tallest-guys {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: var(--shadow);
+            color: white;
+            display: none;
+        }
+        
+        .tallest-guys h3 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .tallest-guy {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 14px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .tallest-guy:last-child {
+            border-bottom: none;
+        }
+        /* For larger screens only show the tallest guys sidebar */
+        
+        @media (min-width: 768px) {
+            .tallest-guys {
+                display: block;
+            }
+        }
+        /* Profile counter */
+        
+        .profile-counter {
+            position: absolute;
+            top: 105px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            font-size: 12px;
+            padding: 5px 10px;
+            border-radius: 15px;
+            z-index: 10;
+        }
     </style>
 </head>
 
@@ -213,11 +289,17 @@
             <div class="logo">BSC Match</div>
         </div>
 
+        <div class="header-info">
+            New website links, and add your own photos! Insta =
+        </div>
+
         <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
         </div>
+
+        <div class="profile-counter">Profile 1 of 6</div>
 
         <div class="card-container">
             <!-- Card will be shown here -->
@@ -231,10 +313,24 @@
             </div>
         </div>
 
+        <div class="disclaimer">
+            We have no relation to Berwick Secondary College, B S C holds its meaning as Be Cool Secretly
+        </div>
 
         <div class="loading">
             <div class="loading-spinner"></div>
         </div>
+    </div>
+
+    <!-- Tallest guys sidebar for desktop -->
+    <div class="tallest-guys">
+        <h3>Tallest Guys Ranking</h3>
+        <div class="tallest-guy"><span>1. Harry</span> <span>185cm</span></div>
+        <div class="tallest-guy"><span>2. Chase</span> <span>182cm</span></div>
+        <div class="tallest-guy"><span>3. Owen</span> <span>179cm</span></div>
+        <div class="tallest-guy"><span>4. Ethan</span> <span>179cm</span></div>
+        <div class="tallest-guy"><span>5. Cameron</span> <span>178cm</span></div>
+        <div class="tallest-guy"><span>6. James</span> <span>177cm</span></div>
     </div>
 
     <script>
@@ -243,48 +339,45 @@
             name: "James",
             img: "/profilephotos/jamesphoto.jpg",
             description: "177cm, Yr 9",
-            snapchat: "fitzy3007"
+            snapchat: "fitzy3007",
+            height: 177
         }, {
             name: "Owen",
             img: "/profilephotos/owenphoto.jpg",
             description: "179cm, Yr 9",
-            snapchat: "renshawowen"
+            snapchat: "renshawowen",
+            height: 179
         }, {
             name: "Cameron",
             img: "/profilephotos/camphoto.jpg",
             description: "178cm, Yr 9",
-            snapchat: "cameronvisser22"
+            snapchat: "cameronvisser22",
+            height: 178
         }, {
             name: "Ethan",
             img: "/profilephotos/ethanphoto.png",
             description: "179cm, Yr 9",
-            snapchat: "ethan.b0wden"
+            snapchat: "ethan.b0wden",
+            height: 179
         }, {
             name: "Harry",
             img: "/profilephotos/harryphoto.jpg",
             description: "185cm, Yr 9",
-            snapchat: "harrymihai19"
+            snapchat: "harrymihai19",
+            height: 185
         }, {
             name: "Chase",
             img: "/profilephotos/chasephoto.jpg",
             description: "182cm, Yr 9",
-            snapchat: "chase-w777"
-        }, {
-            name: "Disclaimer",
-            img: "",
-            description: "We have no relation to Berwick Secondary College, B S C holds its meaning as Be Cool Secretly",
-            snapchat: "Thankyou"
-        }, {
-            name: "Keep up to Date",
-            img: "",
-            description: "New website links, and add your own photos! Insta = ",
-            snapchat: "Thankyou"
+            snapchat: "chase-w777",
+            height: .182
         }];
 
         let currentCardIndex = 0;
         const cardContainer = document.querySelector('.card-container');
         const progressFill = document.querySelector('.progress-fill');
         const loading = document.querySelector('.loading');
+        const profileCounter = document.querySelector('.profile-counter');
         let currentCard = null;
 
         // Initialize the cards
@@ -299,8 +392,15 @@
             currentCard = document.createElement('div');
             currentCard.classList.add('card');
 
+            // Safely handle cases where the image might not exist
+            const imageHtml = profile.img ?
+                `<img src="${profile.img}" alt="${profile.name}" class="card-img">` :
+                `<div class="card-img" style="background-color: #f3f3f3; display: flex; justify-content: center; align-items: center;">
+                    <span style="font-size: 64px; color: #aaa;">📷</span>
+                </div>`;
+
             currentCard.innerHTML = `
-                <img src="${profile.img}" alt="${profile.name}" class="card-img">
+                ${imageHtml}
                 <div class="card-info">
                     <h2 class="card-name">${profile.name}</h2>
                     <p class="card-desc">${profile.description}</p>
@@ -317,11 +417,18 @@
 
             // Update progress bar
             updateProgressBar();
+
+            // Update profile counter
+            updateProfileCounter();
         }
 
         function updateProgressBar() {
             const progress = (currentCardIndex / profiles.length) * 100;
             progressFill.style.width = `${progress}%`;
+        }
+
+        function updateProfileCounter() {
+            profileCounter.textContent = `Profile ${currentCardIndex + 1} of ${profiles.length}`;
         }
 
         function nextProfile() {
@@ -355,23 +462,6 @@
         window.onload = function() {
             initCards();
         };
-
-        // Add more profiles function (for demonstration)
-        function addProfiles(newProfiles) {
-            profiles.push(...newProfiles);
-        }
-
-        // Example of how to add more profiles
-        /*
-        addProfiles([
-            {
-                name: "New Person",
-                img: "/api/placeholder/400/320",
-                description: "5'8\" | Adventure seeker",
-                snapchat: "new_adventures"
-            }
-        ]);
-        */
     </script>
 </body>
 
